@@ -1,13 +1,20 @@
 package com.company;
 
-import com.company.lab1.TestFerma;
+import com.company.lab1.FermaTest;
+import com.company.lab1.MillerRabinTest;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        TestFerma task1 = new TestFerma();
+//        FermaTest fermaTest = new FermaTest();
+//
+//
+//        fermaTest.fermaTest(fermaTest.createListOfP(), fermaTest.inputAndCheckA(fermaTest.createListOfP()));
 
-        task1.printArray(task1.createArray());
+        MillerRabinTest millerRabinTest = new MillerRabinTest();
+        millerRabinTest.IsPrime(millerRabinTest.createListOfP());
+
+
     }
 }
