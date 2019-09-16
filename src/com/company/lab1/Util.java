@@ -9,14 +9,21 @@ public class Util {
     public ArrayList createListOfP() {
         List<Integer> listOrP = new ArrayList<>();
 
-        for (int i = 3; i <= 200; i++) {
+        for (int i = 3; i <= 400; i++) {
             listOrP.add(i);
         }
         return (ArrayList) listOrP;
     }
 
-    public void printListOfP(ArrayList<Integer> listOrP) {
+    public ArrayList<Integer> createSimpleDigitList(){
+        return  new ArrayList<>();
+    }
 
+    public ArrayList<Integer> createComplexDigitList(){
+        return  new ArrayList<>();
+    }
+
+    public void printList(ArrayList<Integer> listOrP) {
         System.out.println(listOrP);
     }
 
@@ -34,5 +41,11 @@ public class Util {
             }
             System.out.println("Основа невірна!");
         }
+    }
+
+    public int enterDigits(){
+        System.out.println("Введіть число для знаходження НСД: ");
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
     }
 }
