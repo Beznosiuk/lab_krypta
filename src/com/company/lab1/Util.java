@@ -9,7 +9,7 @@ public class Util {
     public ArrayList createListOfP() {
         List<Integer> listOrP = new ArrayList<>();
 
-        for (int i = 3; i <= 400; i++) {
+        for (int i = 3; i <= 200; i++) {
             listOrP.add(i);
         }
         return (ArrayList) listOrP;
