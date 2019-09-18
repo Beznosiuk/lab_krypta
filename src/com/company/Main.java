@@ -1,4 +1,5 @@
 package com.company;
+
 import com.company.lab1.EuclideanAlgorithm;
 import com.company.lab1.FermaTest;
 import com.company.lab1.MillerRabinTest;
@@ -8,8 +9,12 @@ import java.util.Scanner;
 public class Main {
 
     public static void main(String[] args) {
+        System.out.println("Виберіть команду для виконання: " +
+                "\n1 - Тест Ферма" +
+                "\n2 - Тест Міллерра-Рабіна" +
+                "\n3 - Алгоритм Евкліда" +
+                "\n4 - Вихід");
 
-        System.out.println("Виберіть команду для виконання: ");
         Scanner scanner = new Scanner(System.in);
         int number = scanner.nextInt();
 
@@ -27,6 +32,8 @@ public class Main {
                 int NSD = evklidTest.euclideanAlgorithm(evklidTest.enterDigits(), evklidTest.enterDigits(), 1, 1);
                 System.out.println("Найбільший спільний дільник: " + NSD);
                 break;
+            case 4:
+                System.out.println("Вихід");
             default:
                 break;
         }
