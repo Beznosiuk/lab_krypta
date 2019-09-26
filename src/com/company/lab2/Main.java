@@ -1,61 +1,47 @@
 package com.company.lab2;
 
 import java.math.BigInteger;
-import java.security.SecureRandom;
 import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        //p - велике просте число, g - первісний корінь, r - будь-яке число
-        Util util = new Util();
-       // AlGamalCode alGamalCode = new AlGamalCode();
 
-        Scanner scan = new Scanner(System.in);
+        Scanner scanner = new Scanner(System.in);
         Random sc = new Random();
+        Util util = new Util();
+
+        BigInteger p = new BigInteger(64, sc); //велике число
+//        BigInteger p = BigInteger.valueOf(103);
+        BigInteger g = util.getPRoot(p); // первісний корінь
+//        BigInteger g = BigInteger.valueOf(4);
+        BigInteger secretKey = new BigInteger(64, sc);
+        BigInteger openKey = g.modPow(secretKey, p);
+
+        System.out.println("P = " + p + "\ng = " + g + "\nSecret key = " + secretKey + "\nOpen key = " + openKey);
+
+        //encryption
+        BigInteger k = new BigInteger(64, sc);
+
+        System.out.println("Enter message: ");
+        BigInteger m = scanner.nextBigInteger();
+
+        BigInteger firstPartOfMessage = g.modPow(k, p);
+        BigInteger secondPart = m.multiply(openKey.modPow(k, p)).mod(p);
+
+        System.out.println("Encrypted message: " + firstPartOfMessage + secondPart);
+
+        //decryption
+
+        BigInteger c1 = firstPartOfMessage.modPow(secretKey, p);
+        BigInteger d = c1.modInverse(p);
+        BigInteger result = d.multiply(secondPart).mod(p);
+
+        System.out.println("Decrypted message: " + result);
 
 
-        //
-        // public key calculation
-        //
-        System.out.println("Enter secret key: ");
-//        BigInteger secretKey = scan.nextBigInteger();
-
-        BigInteger p = BigInteger.valueOf(11);
-        BigInteger g = BigInteger.valueOf(2);
-        BigInteger secretKey = BigInteger.valueOf(8);
-        BigInteger r = BigInteger.valueOf(9);
-
-//
-//        BigInteger p = BigInteger.probablePrime(16, sc);
-//        BigInteger g = util.getPRoot(p);
-        BigInteger c = g.modPow(secretKey, p);
-        System.out.println("p = " + p);
-        System.out.println("g = " + g);
-        System.out.println("c = " + c);
-
-       // alGamalCode.encryption(c, p, g, sc);
-
-
-        System.out.print("Enter massage -->"); //65535
-
-        BigInteger massage = scan.nextBigInteger();
-//        BigInteger r = new BigInteger(16, sc);
-        BigInteger EC = massage.multiply(c.modPow(r, p)).mod(p);
-        BigInteger firstPartOfMessage = g.modPow(r, p);
-        System.out.println("Massage:  " + massage);
-        System.out.println("Random integer" + r);
-        System.out.println("EC = " + EC);
-        System.out.println("Encrypted message: " + firstPartOfMessage);
-        //
-        // Decryption
-        //
-        BigInteger secondPartOfMessage = firstPartOfMessage.modPow(secretKey, p);
-//        BigInteger d = secondPartOfMessage.modInverse(p);
-        BigInteger ad = EC * ;
-//        System.out.println("Вторая часть зашифрованного сообщения c^r mod p = " + secondPartOfMessage);
-        //System.out.println("d = " + d);
-        System.out.println("Дешифрованное сообщение: " + ad);
 
     }
+
+
 }
