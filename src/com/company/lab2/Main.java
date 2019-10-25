@@ -11,9 +11,10 @@ public class Main {
         Random sc = new Random();
         Util util = new Util();
 //        BigInteger p = util.generateP();
-        BigInteger p = BigInteger.valueOf(5038849);
+        BigInteger p = BigInteger.valueOf(13);
         BigInteger g = util.getPRoot(p); // первісний корінь
-        BigInteger secretKey = new BigInteger(64, sc);
+//        BigInteger secretKey = new BigInteger(64, sc);
+        BigInteger secretKey = BigInteger.valueOf(3);
         BigInteger openKey = g.modPow(secretKey, p);
 
         System.out.println("P = " + p +
@@ -22,11 +23,13 @@ public class Main {
                 "\nOpen key = " + openKey);
 
         //encryption
-        BigInteger k = new BigInteger(64, sc);
+//        BigInteger k = new BigInteger(64, sc);
+        BigInteger k = BigInteger.valueOf(5);
 
         System.out.println("Enter message: ");
 
-        BigInteger m = scanner.nextBigInteger();
+//        BigInteger m = scanner.nextBigInteger();
+        BigInteger m = BigInteger.valueOf(7);
         BigInteger firstPartOfMessage = g.modPow(k, p);
         BigInteger secondPart = m.multiply(openKey.modPow(k, p)).mod(p);
 
