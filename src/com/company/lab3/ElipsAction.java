@@ -78,4 +78,14 @@ class ElipsAction {
         else
             return (int) y;
     }
+
+    public int findNum(Coordinates P, Coordinates basePoint, int p){
+        int num=1;
+        Coordinates negPoint = new Coordinates(basePoint.getX(),p-basePoint.getY());
+        while(!P.equals(basePoint)){
+            P=addPoints(P, negPoint);
+            num++;
+        }
+        return num;
+    }
 }

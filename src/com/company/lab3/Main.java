@@ -1,6 +1,5 @@
 package com.company.lab3;
 
-import java.io.Console;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -19,6 +18,7 @@ public class Main {
             System.out.println("invalid parameters");
         }
 
+        List<Coordinates> encPoint = new LinkedList<>();
         ElipsAction elipsAction = new ElipsAction(a, p);
         List<Coordinates> coords = new ArrayList<>();
 
@@ -39,7 +39,7 @@ public class Main {
             i++;
         }
 
-        int msg[] = {16, 19, 14, 1, 15};
+        int[] msg = {16, 17, 14, 1, 15};
 
         Coordinates basePoint = new Coordinates(4, 5);
 
@@ -84,6 +84,14 @@ public class Main {
         for (Coordinates tmp : msgPoints) {
             tmp = elipsAction.addPoints(tmp, kbrG);
             System.out.print(tmp);
+            encPoint.add(tmp);
         }
+
+        System.out.println("\n\u001B[31m" + "Encoded array:" + "\u001B[0m");
+        for (Coordinates tmp : encPoint) {
+            int num = elipsAction.findNum(tmp, basePoint, p);
+            System.out.print(num + "\t");
+        }
+
     }
 }
